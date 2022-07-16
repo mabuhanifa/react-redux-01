@@ -1,19 +1,35 @@
-import { useDispatch, useSelector } from 'react-redux/es/exports';
-import './App.css';
-import { decrement, increment, reset } from './redux/counterSlice';
+import { useDispatch, useSelector } from "react-redux/es/exports";
+import "./App.css";
+import { decrement, increment, reset } from "./redux/action/counterAction";
 
 function App() {
-const dispatch = useDispatch();
-  const counter = useSelector((state)=>
-  state.counter.value
-    )
+  const dispatch = useDispatch();
+  const count = useSelector((state) => state.count);
+  console.log(count);
   return (
-    <div >
-      <h4>{counter}</h4>
-      <button onClick={()=>{dispatch(increment())}}>+</button>
-      <button onClick={()=>{dispatch(decrement())}}>-</button>
-      <button onClick={()=>{dispatch(reset())}}>-</button>
-      {console.log(increment,decrement)}
+    <div>
+      <h4>{count}</h4>
+      <button
+        onClick={() => {
+          dispatch(increment());
+        }}
+      >
+        +
+      </button>
+      <button
+        onClick={() => {
+          dispatch(decrement());
+        }}
+      >
+        -
+      </button>
+      <button
+        onClick={() => {
+          dispatch(reset());
+        }}
+      >
+        -
+      </button>
     </div>
   );
 }
